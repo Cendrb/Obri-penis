@@ -21,7 +21,7 @@ public class AntigravityAkbar : MonoBehaviour {
                     affectedRigidbody.useGravity = false;
                     affectedRigidbody.AddForce(new Vector3(0, 5, 0), ForceMode.VelocityChange);
                     affectedObjects.Add(collider.gameObject);
-                    collider.gameObject.AddComponent<InvokeAfter>().Initialize((GO) => GO.GetComponent<Rigidbody>().useGravity = true, 2);
+                    collider.gameObject.AddComponent<InvokeAfter>().Initialize((GO) => GO.GetComponent<Rigidbody>().useGravity = true, 5);
                 }
             }
         }

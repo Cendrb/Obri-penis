@@ -10,13 +10,15 @@ public class AllahuAkbar : MonoBehaviour {
     public void OnCollisionEnter()
     {
         AudioSource.PlayClipAtPoint(explosion, gameObject.transform.position);
-        Collider[] affectedColliders = Physics.OverlapSphere(gameObject.transform.position, 50);
+        Collider[] affectedColliders = Physics.OverlapSphere(gameObject.transform.position, 10);
         foreach (Collider collider in affectedColliders)
         {
             if (collider.gameObject.GetComponent<Rigidbody>())
             {
                 Rigidbody affectedRigidbody = collider.gameObject.GetComponent<Rigidbody>();
-                affectedRigidbody.AddExplosionForce(69, gameObject.transform.position, 69);
+                affectedRigidbody.useGravity = true;
+                affectedRigidbody.AddExplosionForce(500, gameObject.transform.position, 10);
+                affectedRigidbody.constraints = RigidbodyConstraints.None;
             }
         }
         GameObject.Destroy(gameObject);
